@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@plugin 'daisyui' {
+  themes: all;
+
+}body {
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.25rem; /* equivalent to text-4xl in Tailwind */
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.875rem; /* equivalent to text-3xl */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.5rem; /* equivalent to text-2xl */
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem; /* default paragraph size */
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
