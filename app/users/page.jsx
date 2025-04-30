@@ -23,7 +23,8 @@ const UsersPage = () => {
 
   return (
     <div>
-
+        <p>{users.name}</p>
+        <p>{users.email}</p>
     </div>
   )
 }
