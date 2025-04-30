@@ -1,13 +1,17 @@
 "use client"
 import { useState } from 'react'
-import LoginForm from '../components/LoginForm';
+import Form from '../components/Form';
 import Header from '../components/Header';
 
 
 const Login = () => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
+    const [userData, setUserData] = useState({
+        name: '',
+        email: '',
+        password: ''
+    });
+   
 
     const handleClick = () => {
         const newUser = async () => {
@@ -17,11 +21,9 @@ const Login = () => {
     }
 
     const handleChange = (e) => {
-        if(e.target.name === "email") {
-            setEmail(e.target.value);
-        } else if(e.target.name === 'password') {
-               setPassword(e.target.value);
-        }
+        const {name, value} = e.target;
+   setUserData( prev => ({...prev, [name]: value}) );
+   console.log(userData)
         
      
     }
@@ -30,11 +32,12 @@ const Login = () => {
     <>
       <Header />
       <h1>Login Page</h1>
-      <LoginForm
+      <Form
         handleChange={handleChange}
         handleClick={handleClick}
-        email={email}
-        password={password}
+        name={userData.name}
+        email={userData.email}
+        password={userData.password}
       />
     </>
   );

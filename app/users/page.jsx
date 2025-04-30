@@ -23,8 +23,9 @@ const UsersPage = () => {
 
   return (
     <div>
-        <p>{users.name}</p>
-        <p>{users.email}</p>
+        <ul>
+            {users.map( user => <li key={user.id}>{user.email}</li> )}
+        </ul>
     </div>
   )
 }
