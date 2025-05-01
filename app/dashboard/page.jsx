@@ -1,8 +1,19 @@
-import React from 'react'
+"use client"
+import { useState } from 'react';
 
 const Dashboard = () => {
+  const [blogData, setBlogData] = useState({ title: '', name: '', content: ''})
+  const handleClick = () => {
+
+  }
   return (
-    <div>Dashboard</div>
+    
+    <div>
+      <form onSubmit={}>
+
+
+      </form>
+    </div>
   )
 }
 
