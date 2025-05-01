@@ -10,7 +10,6 @@ const Login = () => {
   const router = useRouter();
 
     const [userData, setUserData] = useState({
-        name: '',
         email: '',
         password: ''
     });
