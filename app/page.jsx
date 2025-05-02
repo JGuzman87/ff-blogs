@@ -1,24 +1,24 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import Header from "./components/Header";
 export default function Home() {
 
   const [blogs, setBlogs] = useState(null);
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await fetch('/api/blogs');
-        const data = await response.json();
-        setBlogs(data);
-        console.log(data);
-      }catch (error) {
-        console.log(error);
-      }
-    }
-    fetchBlogs();
-  }, [])
+  // useEffect(() => {
+  //   const fetchBlogs = async () => {
+  //     try {
+  //       const response = await fetch('/api/blogs');
+  //       const data = await response.json();
+  //       setBlogs(data);
+  //       console.log(data);
+  //     }catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   fetchBlogs();
+  // }, [])
 
   return (
     <div className="flex flex-col gap-4 ">
