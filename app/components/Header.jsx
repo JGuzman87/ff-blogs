@@ -9,14 +9,7 @@ const Header = () => {
 
 const pathname = usePathname();
 
-  const handleClick = () => {
-    if(pathname === '/') {
-       router.push("/login");
-    } else if(pathname === "/login") {
-      router.push('signup');
-    }
-   
-  }
+
   return (
     <header className="grid grid-cols-1 md:grid-cols-3">
       <nav className="flex justify-between p-4 md:col-span-3">
