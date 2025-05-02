@@ -27,11 +27,11 @@ const pathname = usePathname();
 
         <button onClick={handleClick} className="btn btn-neutral self-center ">{pathname === '/' ? <p>Login</p> : <p>Signup</p>}</button>
       </nav>
-      {pathname === '/' && <div className="col-span-3 p-4">
+      {pathname === '/' && <div className="col-span-3">
         <img
           src={"/olya-kolosha-3.jpg"}
-          alt="pac & ghost"
-          className="w-full h-1/2"
+          alt="lindblum"
+          className="w-full h-50"
         />
       </div>}
     </header>
