@@ -1,13 +1,12 @@
 "use client"
 import React from 'react'
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { usePathname } from "next/navigation";
 
 
 const Header = () => {
 
-const router = useRouter();
+
 const pathname = usePathname();
 
   const handleClick = () => {
@@ -20,12 +19,12 @@ const pathname = usePathname();
   }
   return (
     <header className="grid grid-cols-1 md:grid-cols-3">
-      <nav className="flex justify-between p-2 md:col-span-3 shadow-2xl">
+      <nav className="flex justify-between p-4 md:col-span-3">
         <Link href={"/"}>
           <h1 className="hover:text-purple-900">LindBlogs</h1>
         </Link>
 
-        <button onClick={handleClick} className="btn btn-neutral self-center ">{pathname === '/' ? <p>Login</p> : <p>Signup</p>}</button>
+        <Link href={"/login"} className='link link-hover self-center'>{pathname === '/' ? <p>Login</p> : <p>Signup</p>}</Link>
       </nav>
       {pathname === '/' && <div className="col-span-3">
         <img

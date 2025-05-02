@@ -21,6 +21,7 @@ export async function POST(request) {
 export async function GET() {
     try {
         const result = await pool.query("SELECT * FROM blog_posts");
+
         return NextResponse.json(result.rows);
     }catch (error) {
         return NextResponse.json({error: 'Failed to fetch blogs'}, {status: 500});
