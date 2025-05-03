@@ -1,5 +1,6 @@
 import React from 'react'
 import { usePathname } from "next/navigation";
+import Link from 'next/link';
 
 const Form = ({handleChange, handleClick, name, email, password}) => {
   const pathname = usePathname();
@@ -8,17 +9,19 @@ const Form = ({handleChange, handleClick, name, email, password}) => {
       className="bg-gray-100 flex flex-col p-4 gap-4 md:max-w-1/2 items-center shadow-2xl"
       onSubmit={handleClick}
     >
-{pathname === '/signup' && <>
-<label>Name:</label>
-    <input
-      className="bg-white"
-      name="name"
-      type="text"
-      onChange={handleChange}
-      value={name}
-      required
-    />
-    </>}
+      {pathname === "/signup" && (
+        <>
+          <label>Name:</label>
+          <input
+            className="bg-white"
+            name="name"
+            type="text"
+            onChange={handleChange}
+            value={name}
+            required
+          />
+        </>
+      )}
       <label>Email:</label>
       <input
         className="bg-white"
@@ -37,6 +40,16 @@ const Form = ({handleChange, handleClick, name, email, password}) => {
         value={password}
         required
       />
+      {pathname === "/login" && (
+        <div className="flex justify-evenly">
+          <p>
+            not a registerd user?{" "}
+            <Link href={"/signup"}>
+              <p className='link link-hover'>signup</p>
+            </Link>
+          </p>
+        </div>
+      )}
       <button className="bg-amber-600 rounded-lg w-1/2 " type="submit">
         Submit
       </button>

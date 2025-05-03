@@ -17,7 +17,7 @@ const pathname = usePathname();
           <h1 className="hover:text-purple-900">LindBlogs</h1>
         </Link>
 
-        <Link href={pathname === '/' ? '/login' : 'signup'} className='link link-hover self-center'>{pathname === '/' ? <p>Login</p> : <p>Signup</p>}</Link>
+        <Link href={pathname === '/dashboard' ? '/' : '/login'} className='link link-hover self-center'>{pathname === '/dashboard' ? <p>Logout</p> : <p>Login</p>}</Link>
       </nav>
       {pathname === '/' && <div className="col-span-3">
         <img

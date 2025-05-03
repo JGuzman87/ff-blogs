@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import BlogForm from "../components/BlogForm";
 import BlogPosts from "../components/BlogPosts";
+import Header from "../components/Header";
 
 const Dashboard = () => {
   const [blogData, setBlogData] = useState({ title: "", content: "" });
@@ -56,6 +57,7 @@ const Dashboard = () => {
     setBlogData({ title: "", content: "" });
   };
 
+  //function to delete blog posts
   const handleDelete = async (id) => {
     try {
       const res = await fetch(`/api/blogs/${id}`, { method: "DELETE" });
@@ -72,15 +74,22 @@ const Dashboard = () => {
     setBlogData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   return (
-    <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 p-2 gap-8 items-start">
-      <BlogForm
-        change={handleChange}
-        click={handleClick}
-        title={blogData.title}
-        content={blogData.content}
-      />
-      <BlogPosts blogData={blogData} savedBlogs={savedBlogs} handleDelete={handleDelete}/>
-    </div>
+    <>
+      <Header />
+      <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 p-2 gap-8 items-start">
+        <BlogForm
+          change={handleChange}
+          click={handleClick}
+          title={blogData.title}
+          content={blogData.content}
+        />
+        <BlogPosts
+          blogData={blogData}
+          savedBlogs={savedBlogs}
+          handleDelete={handleDelete}
+        />
+      </div>
+    </>
   );
 };
 
