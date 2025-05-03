@@ -41,13 +41,11 @@ const Form = ({handleChange, handleClick, name, email, password}) => {
         required
       />
       {pathname === "/login" && (
-        <div className="flex justify-evenly">
-          <p>
-            not a registerd user?{" "}
-            <Link href={"/signup"}>
-              <p className='link link-hover'>signup</p>
-            </Link>
-          </p>
+        <div className="flex flex-col">
+          <p>not a registerd user? </p>
+          <Link href={"/signup"}>
+            <p className="link link-hover">signup</p>
+          </Link>
         </div>
       )}
       <button className="bg-amber-600 rounded-lg w-1/2 " type="submit">
