@@ -1,7 +1,7 @@
 "use client"
-
 import {  useState, useEffect } from "react";
 import Header from "./components/Header";
+
 export default function Home() {
 
   const [blogs, setBlogs] = useState(null);
@@ -23,6 +23,7 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-4 ">
      <Header />
+
     {blogs?.map((blog => 
       <div key={blog.id} className="shadow-2xl max-w-full p-4 md:max-w-1/2 item-center">
         <h1>Title: {blog.title}</h1>
