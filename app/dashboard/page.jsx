@@ -3,10 +3,20 @@ import { useState, useEffect } from "react";
 import BlogForm from "../components/BlogForm";
 import BlogPosts from "../components/BlogPosts";
 import Header from "../components/Header";
+import { useRouter } from "next/navigation";
+
 
 const Dashboard = () => {
   const [blogData, setBlogData] = useState({ title: "", content: "" });
   const [savedBlogs, setSavedBlogs] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if(!token) {
+      router.push('/login')
+    }
+  },[])
 
   useEffect(() => {
     const fetchBlogs = async () => {

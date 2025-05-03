@@ -24,7 +24,10 @@ e.preventDefault();
               body: JSON.stringify(userData)
             });
         if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem("token", data.token);
           router.push('/dashboard');
+          
         } else {
           const errorData = await response.json();
           console.error("Login Failed:", errorData.message || 'unknown error');

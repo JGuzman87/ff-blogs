@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import pool from "@/lib/db";
+import jwt from "jsonwebtoken";
+
 
 // Handle POST request to log in a user
 export async function POST(request) {
@@ -18,8 +20,15 @@ export async function POST(request) {
     // User found and password matches, return user info
     const user = result.rows[0];
 
+    const token = jwt.sign(
+      {id: user.id, email: user.email},
+      process.env.JWT_SECRET,
+      {expiresIn: "1d"}
+    );
+
     return NextResponse.json({
       message: "Login successful",
+      token,
       user: {
         id: user.id,
         name: user.name,
