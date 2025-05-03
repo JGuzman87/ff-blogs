@@ -1,6 +1,8 @@
 import React from 'react'
 
-const BlogPosts = ({savedBlogs, blogData}) => {
+
+
+const BlogPosts = ({savedBlogs, blogData, handleDelete}) => {
   return (
     <div className="flex flex-col justify-between md:col-start-2 md:col-end-4 gap-4">
       {blogData &&
@@ -13,7 +15,7 @@ const BlogPosts = ({savedBlogs, blogData}) => {
               <h2 className="card-title">{blog.title}</h2>
               <p>{blog.content}</p>
               <div>
-                <button className="btn btn-soft btn-error">Delete</button>
+                <button className="btn btn-soft btn-error" onClick={() => handleDelete(blog.id)}>Delete</button>
               </div>
             </div>
           </div>

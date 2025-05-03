@@ -5,22 +5,21 @@ import BlogPosts from "../components/BlogPosts";
 
 const Dashboard = () => {
   const [blogData, setBlogData] = useState({ title: "", content: "" });
-  const [savedBlogs, setSavedBlogs] = useState([])
+  const [savedBlogs, setSavedBlogs] = useState([]);
 
   useEffect(() => {
-        const fetchBlogs = async () => {
-          try {
-            const response = await fetch("/api/blogs");
-            const data = await response.json();
-            setSavedBlogs(data);
-          } catch (error) {
-            console.log(error);
-          }
-        };
-        fetchBlogs();
-  
-  }, [])
-  
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch("/api/blogs");
+        const data = await response.json();
+        setSavedBlogs(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchBlogs();
+  }, []);
+
   const handleClick = async (e) => {
     e.preventDefault();
 
@@ -43,31 +42,44 @@ const Dashboard = () => {
       console.error(error);
     }
 
-          const fetchBlogs = async () => {
-            try {
-              const response = await fetch("/api/blogs");
-              const data = await response.json();
-              setSavedBlogs(data);
-            } catch (error) {
-              console.log(error);
-            }
-          };
-          fetchBlogs();
-
-
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch("/api/blogs");
+        const data = await response.json();
+        setSavedBlogs(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchBlogs();
 
     setBlogData({ title: "", content: "" });
   };
 
-
+  const handleDelete = async (id) => {
+    try {
+      const res = await fetch(`/api/blogs/${id}`, { method: "DELETE" });
+      if (res.ok) {
+        // Refresh blog list
+        setSavedBlogs((prev) => prev.filter((blog) => blog.id !== id));
+      }
+    } catch (err) {
+      console.error("Failed to delete", err);
+    }
+  };
 
   const handleChange = (e) => {
     setBlogData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   return (
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 p-2 gap-8 items-start">
-     <BlogForm change={handleChange} click={handleClick} title={blogData.title} content={blogData.content}/>
-     <BlogPosts blogData={blogData} savedBlogs={savedBlogs} />
+      <BlogForm
+        change={handleChange}
+        click={handleClick}
+        title={blogData.title}
+        content={blogData.content}
+      />
+      <BlogPosts blogData={blogData} savedBlogs={savedBlogs} handleDelete={handleDelete}/>
     </div>
   );
 };
