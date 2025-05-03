@@ -1,8 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Dashboard = () => {
   const [blogData, setBlogData] = useState({ title: "", content: "" });
+  const [savedBlogs, setSavedBlogs] = useState([])
+
+  useEffect(() => {
+        const fetchBlogs = async () => {
+          try {
+            const response = await fetch("/api/blogs");
+            const data = await response.json();
+            setSavedBlogs(data);
+          } catch (error) {
+            console.log(error);
+          }
+        };
+        fetchBlogs();
+  
+  }, [])
   
   const handleClick = async (e) => {
     e.preventDefault();
@@ -25,18 +40,32 @@ const Dashboard = () => {
     } catch (error) {
       console.error(error);
     }
-    console.log(blogData);
+
+          const fetchBlogs = async () => {
+            try {
+              const response = await fetch("/api/blogs");
+              const data = await response.json();
+              setSavedBlogs(data);
+            } catch (error) {
+              console.log(error);
+            }
+          };
+          fetchBlogs();
+
+
 
     setBlogData({ title: "", content: "" });
   };
+
+
 
   const handleChange = (e) => {
     setBlogData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   return (
-    <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 p-2 gap-8">
+    <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 p-2 gap-8 items-start">
       <form
-        className="flex flex-col p-2 justify-center max-w-full  max-h-1/2 md:max-w-full  gap-4 bg-gray-200 col-span-1 shadow-2xl rounded-md"
+        className="flex flex-col p-2 justify-evenly md:justify-center max-w-full  gap-4 bg-gray-200 col-span-1 shadow-2xl rounded-md h-fit"
         onSubmit={handleClick}
       >
         <p>Create Blog</p>
@@ -69,15 +98,22 @@ const Dashboard = () => {
           submit
         </button>
       </form>
-
-      <div className="card bg-base-100 card-sm shadow-sm md:col-span-2 md:max-h-0.5">
-        <div className="card-body shadow-2xl">
-          <h2 className="card-title">BlogTitle</h2>
-          <p>
-            A card component has a figure, a body part, and inside body there
-            are title and actions parts
-          </p>
-        </div>
+      <div className="flex flex-col justify-between md:col-start-2 md:col-end-4 gap-4">
+        {blogData &&
+          savedBlogs.map((blog) => (
+            <div
+              key={blog.id}
+              className="card bg-base-100 card-sm shadow-sm md:col-start-2 md:col-end-4 "
+            >
+              <div className="card-body shadow-2xl">
+                <h2 className="card-title">{blog.title}</h2>
+                <p>{blog.content}</p>
+                <div>
+                  <button className="btn btn-soft btn-error">Delete</button>
+                </div>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );

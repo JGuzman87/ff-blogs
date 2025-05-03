@@ -12,7 +12,7 @@ export default function Home() {
         const response = await fetch('/api/blogs');
         const data = await response.json();
         setBlogs(data);
-        console.log(data);
+      
       }catch (error) {
         console.log(error);
       }

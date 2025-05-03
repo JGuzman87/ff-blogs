@@ -3,7 +3,9 @@
 @plugin 'daisyui' {
   themes: all;
 
-}body {
+}
+
+body {
   min-height: 100vh;
 }
 

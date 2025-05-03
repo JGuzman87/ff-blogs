@@ -38,7 +38,7 @@ e.preventDefault();
     const handleChange = (e) => {
         const {name, value} = e.target;
    setUserData( prev => ({...prev, [name]: value}) );
-   console.log(userData)
+  
         
      
     }

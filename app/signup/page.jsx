@@ -17,7 +17,7 @@ const Signup = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData((prev) => ({ ...prev, [name]: value }));
-    console.log(userData);
+  
   };
 
   const handleClick = async (e) => {
