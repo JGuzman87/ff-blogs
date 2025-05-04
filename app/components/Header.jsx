@@ -2,12 +2,20 @@
 import React from 'react'
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
+import { useRouter } from 'next/navigation';
+
 
 
 const Header = () => {
 
-
 const pathname = usePathname();
+const router = useRouter();
+
+const handleClick = () => {
+  localStorage.removeItem('token');
+  router.push('/login');
+
+}
 
 
   return (
@@ -17,7 +25,8 @@ const pathname = usePathname();
           <h1 className="hover:text-purple-900">LindBlogs</h1>
         </Link>
 
-        <Link href={pathname === '/dashboard' ? '/' : '/login'} className='link link-hover self-center'>{pathname === '/dashboard' ? <p>Logout</p> : <p>Login</p>}</Link>
+        {pathname === "/" && <Link href={'/login'} className='link link-hover self-center'>Login</Link>}
+        {pathname === '/dashboard' && <button className='btn btn-ghost' onClick={handleClick}>Logout</button>}
       </nav>
       {pathname === '/' && <div className="col-span-3">
         <img
