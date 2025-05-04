@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import pool from "@/lib/db";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 
 // Handle POST request to log in a user
@@ -12,13 +13,17 @@ export async function POST(request) {
     // Look up the user in the database by email
     const result = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
 
-    // If no user is found or the password doesn't match, return an error
-    if (result.rows.length === 0 || result.rows[0].password !== password) {
+    // If no user is found return an error
+    if (result.rows.length === 0 ) {
       return NextResponse.json({ message: "Invalid credentials" }, { status: 401 });
     }
 
-    // User found and password matches, return user info
     const user = result.rows[0];
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return NextResponse.json({message: "Invalid Credentials"}, {status: 401})
+    }
 
     const token = jwt.sign(
       {id: user.id, email: user.email},
