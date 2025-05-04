@@ -4,9 +4,12 @@ import BlogForm from "../components/BlogForm";
 import BlogPosts from "../components/BlogPosts";
 import Header from "../components/Header";
 import { useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 
 const Dashboard = () => {
+  const pathname = usePathname();
   const [blogData, setBlogData] = useState({ title: "", content: "" });
   const [savedBlogs, setSavedBlogs] = useState([]);
   const router = useRouter();
@@ -85,7 +88,14 @@ const Dashboard = () => {
   };
   return (
     <>
-      <Header />
+         <AnimatePresence mode="wait">
+      <motion.div
+        key={pathname}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+      > <Header />
       <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 p-2 gap-8 items-start">
         <BlogForm
           change={handleChange}
@@ -99,6 +109,9 @@ const Dashboard = () => {
           handleDelete={handleDelete}
         />
       </div>
+      </motion.div>
+      </AnimatePresence>
+     
     </>
   );
 };

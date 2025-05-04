@@ -4,9 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Form from "../components/Form";
 import Header from "../components/Header";
+import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const Signup = () => {
   const router = useRouter();
+    const pathname = usePathname();
 
   const [userData, setUserData] = useState({
     name: "",
@@ -40,8 +43,16 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <Header />
+  <>
+   <AnimatePresence mode="wait">
+      <motion.div
+        key={pathname}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+      >
+              <Header />
       <h1>Signup Page</h1>
       <Form
         handleClick={handleClick}
@@ -50,7 +61,12 @@ const Signup = () => {
         email={userData.email}
         password={userData.password}
       />
-    </div>
+      </motion.div>
+      </AnimatePresence>
+
+  </>
+      
+    
   );
 };
 

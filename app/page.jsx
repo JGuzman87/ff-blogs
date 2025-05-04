@@ -1,10 +1,14 @@
 "use client"
 import {  useState, useEffect } from "react";
 import Header from "./components/Header";
+import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export default function Home() {
 
   const [blogs, setBlogs] = useState(null);
+    const pathname = usePathname();
+
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -22,7 +26,15 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-4 ">
-     <Header />
+     <AnimatePresence mode="wait">
+      <motion.div
+        key={pathname}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+      >
+    <Header />
 
     {blogs?.map((blog => 
       <div key={blog.id} className="shadow-2xl max-w-full p-4 md:max-w-1/2 item-center">
@@ -30,6 +42,9 @@ export default function Home() {
         <p>{blog.content}</p>
       </div>
     ))}
-    </div>
+      </motion.div>
+      </AnimatePresence>
+      </div>
+ 
   );
 }

@@ -3,11 +3,14 @@ import { useState } from 'react'
 import Form from '../components/Form';
 import Header from '../components/Header';
 import { useRouter }  from 'next/navigation';
+import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from 'next/navigation';
 
 
 const Login = () => {
 
   const router = useRouter();
+  const pathname = usePathname();
 
     const [userData, setUserData] = useState({
         email: '',
@@ -48,6 +51,14 @@ e.preventDefault();
 
   return (
     <>
+     <AnimatePresence mode="wait">
+      <motion.div
+        key={pathname}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+      >
       <Header />
       <h1>Login Page</h1>
       <Form
@@ -56,6 +67,9 @@ e.preventDefault();
         email={userData.email}
         password={userData.password}
       />
+      </motion.div>
+      </AnimatePresence>
+ 
     </>
   );
 }
