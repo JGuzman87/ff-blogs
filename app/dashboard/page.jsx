@@ -12,6 +12,7 @@ const Dashboard = () => {
   const pathname = usePathname();
   const [blogData, setBlogData] = useState({ title: "", content: "" });
   const [savedBlogs, setSavedBlogs] = useState([]);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const Dashboard = () => {
         setSavedBlogs(data);
       } catch (error) {
         console.log(error);
-      }
+      } 
     };
     fetchBlogs();
   }, []);
@@ -88,7 +89,7 @@ const Dashboard = () => {
   };
   return (
     <>
-         <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
         initial={{ opacity: 0, y: 20 }}
@@ -103,11 +104,13 @@ const Dashboard = () => {
           title={blogData.title}
           content={blogData.content}
         />
-        <BlogPosts
-          blogData={blogData}
-          savedBlogs={savedBlogs}
-          handleDelete={handleDelete}
-        />
+
+          <BlogPosts
+            blogData={blogData}
+            savedBlogs={savedBlogs}
+            handleDelete={handleDelete}
+          />
+        
       </div>
       </motion.div>
       </AnimatePresence>

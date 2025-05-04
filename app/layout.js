@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
 
-
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,7 +19,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="lofi">
+    <html lang="en" data-theme="nord">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
