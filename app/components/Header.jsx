@@ -27,7 +27,7 @@ const handleClick = () => {
         <Link href={"/"}>
           <h1 className="hover:text-purple-900">LindBlogs</h1>
         </Link>
-        <h1>Welcome {welcome}</h1>
+        {welcome}
         {pathname === "/" && (
           <Link href={"/login"} className="link link-hover self-center">
             Login

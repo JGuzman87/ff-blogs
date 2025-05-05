@@ -2,35 +2,37 @@ import React from 'react'
 import { usePathname } from "next/navigation";
 import Link from 'next/link';
 
-const Form = ({handleChange, handleClick, name, email, password}) => {
+const Form = ({handleChange, handleClick,name, email, password}) => {
   const pathname = usePathname();
   return (
     <form
       className="flex flex-col  p-4 gap-4 md:max-w-1/2 items-center shadow-2xl"
       onSubmit={handleClick}
     >
-      {pathname === "/signup" && (
-        <>
-          <label>Name:</label>
+          <label>Username</label>
           <input
             className="bg-white"
-            name="name"
+            name="username"
             type="text"
             onChange={handleChange}
             value={name}
             required
           />
-        </>
-      )}
-      <label>Email:</label>
-      <input
-        className="bg-white"
-        name="email"
-        type="email"
-        onChange={handleChange}
-        value={email}
-        required
-      />
+     
+
+     {pathname === "/signup" && 
+        <>
+          <label>Email:</label>
+          <input
+            className="bg-white"
+            name="email"
+            type="text"
+            onChange={handleChange}
+            value={email}
+            required
+          />
+        </>}
+
       <label>Password:</label>
       <input
         className="bg-white"

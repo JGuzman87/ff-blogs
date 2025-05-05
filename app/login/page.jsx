@@ -13,7 +13,7 @@ const Login = () => {
   const pathname = usePathname();
 
     const [userData, setUserData] = useState({
-        email: '',
+        username: '',
         password: ''
     });
    
@@ -29,7 +29,7 @@ e.preventDefault();
         if (response.ok) {
           const data = await response.json();
           localStorage.setItem("token", data.token);
-          
+          localStorage.setItem('username')
           router.push('/dashboard');
           
         } else {

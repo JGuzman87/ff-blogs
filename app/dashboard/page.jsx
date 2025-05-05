@@ -12,7 +12,7 @@ const Dashboard = () => {
   const pathname = usePathname();
   const [blogData, setBlogData] = useState({ title: "", content: "" });
   const [savedBlogs, setSavedBlogs] = useState([]);
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState('')
  
 
   const router = useRouter();
@@ -38,25 +38,15 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    const fetchName = async() => {
-      try {
-        const response = await fetch("/api/users/");
-        console.log(response.body)
-     
-            const data = await response.json();
-            setUser(data);
-            console.log(user);
-       
+  const savedUser = localStorage.getItem('user');
+  
+ setUser(savedUser);
+
+  
+   console.log(savedUser)
    
-        
-      }catch (error) {
-        alert("could not retrieve name")
-      }
-      
-      
-    }
-    fetchName();
-  },[])
+ 
+  },[]);
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -119,7 +109,7 @@ const Dashboard = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
-      > <Header welcome={user.name} />
+      > <Header welcome={user} />
       <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 p-2 gap-8 items-start">
         <BlogForm
           change={handleChange}

@@ -8,10 +8,10 @@ import bcrypt from "bcrypt";
 export async function POST(request) {
   try {
     // Parse email and password from the incoming request
-    const { email, password } = await request.json();
+    const { username, password } = await request.json();
 
     // Look up the user in the database by email
-    const result = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+    const result = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
 
     // If no user is found return an error
     if (result.rows.length === 0 ) {

@@ -12,7 +12,7 @@ const Signup = () => {
     const pathname = usePathname();
 
   const [userData, setUserData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -33,7 +33,7 @@ const Signup = () => {
       });
       if (response.ok) {
         router.push("/dashboard");
-        localStorage.setItem('user', userData.name)
+        localStorage.setItem('user', userData.username)
       } else {
         const errorData = await response.json();
         console.error("Signup Failed:", errorData.message || "unknown error");
@@ -58,7 +58,7 @@ const Signup = () => {
       <Form
         handleClick={handleClick}
         handleChange={handleChange}
-        name={userData.name}
+        name={userData.username}
         email={userData.email}
         password={userData.password}
       />
