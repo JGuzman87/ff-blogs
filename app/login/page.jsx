@@ -29,7 +29,7 @@ e.preventDefault();
         if (response.ok) {
           const data = await response.json();
           localStorage.setItem("token", data.token);
-          localStorage.setItem('username')
+          localStorage.setItem('user', userData.username)
           router.push('/dashboard');
           
         } else {
