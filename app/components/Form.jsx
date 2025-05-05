@@ -6,7 +6,7 @@ const Form = ({handleChange, handleClick, name, email, password}) => {
   const pathname = usePathname();
   return (
     <form
-      className="bg-gray-100 flex flex-col p-4 gap-4 md:max-w-1/2 items-center shadow-2xl"
+      className="flex flex-col  p-4 gap-4 md:max-w-1/2 items-center shadow-2xl"
       onSubmit={handleClick}
     >
       {pathname === "/signup" && (
@@ -42,9 +42,9 @@ const Form = ({handleChange, handleClick, name, email, password}) => {
       />
       {pathname === "/login" && (
         <div className="flex flex-col">
-          <p>not a registerd user? </p>
+          <p>not registered?</p>
           <Link href={"/signup"}>
-            <p className="link link-hover">signup</p>
+            <p className="link link-hover">Sign up</p>
           </Link>
         </div>
       )}

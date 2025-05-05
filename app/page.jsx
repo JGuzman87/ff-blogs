@@ -26,25 +26,27 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-4 ">
-     <AnimatePresence mode="wait">
-      <motion.div
-        key={pathname}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-      >
-    <Header />
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={pathname}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <Header />
 
-    {blogs?.map((blog => 
-      <div key={blog.id} className="shadow-2xl max-w-full p-4 md:max-w-1/2 item-center">
-        <h1>Title: {blog.title}</h1>
-        <p>{blog.content}</p>
-      </div>
-    ))}
-      </motion.div>
+          {blogs?.map((blog) => (
+            <div
+              key={blog.id}
+              className=" bg-white fill-white drop-shadow-xl/50 shadow-2xl max-w-full p-4 md:max-w-1/2 item-center"
+            >
+              <h1 className="underline">{blog.title}</h1>
+              <p>{blog.content}</p>
+            </div>
+          ))}
+        </motion.div>
       </AnimatePresence>
-      </div>
- 
+    </div>
   );
 }

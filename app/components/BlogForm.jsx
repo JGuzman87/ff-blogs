@@ -5,13 +5,13 @@ const BlogForm = ({click, change, title, content}) => {
     
   return (
     <form
-      className="flex flex-col p-2 justify-evenly md:justify-center max-w-full  gap-4 bg-gray-200 col-span-1 shadow-2xl rounded-md h-fit"
+      className="flex flex-col p-2 justify-evenly md:justify-center max-w-full  gap-4 col-span-1 shadow-2xl rounded-md bg-linear-to-r from-cyan-500 to-blue-500"
       onSubmit={click}
     >
-      <p>Create Blog</p>
-      <label className="p-2" htmlFor="title">
+    
+      <label className="p-2 font-bold" htmlFor="title">
         {" "}
-        Title
+        TITLE
       </label>
       <input
         className="p-2 bg-white"
@@ -22,8 +22,8 @@ const BlogForm = ({click, change, title, content}) => {
         value={title}
         required
       />
-      <label className="p-2" htmlFor="content">
-        Content
+      <label className="p-2 font-bold" htmlFor="content">
+        CONTENT
       </label>
       <textarea
         className="p-2 bg-white border-blue-300"
@@ -34,7 +34,7 @@ const BlogForm = ({click, change, title, content}) => {
         value={content}
         required
       ></textarea>
-      <button type="submit" className="btn btn-secondary">
+      <button type="submit" className="btn ">
         submit
       </button>
     </form>

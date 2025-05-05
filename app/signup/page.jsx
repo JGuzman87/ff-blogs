@@ -33,6 +33,7 @@ const Signup = () => {
       });
       if (response.ok) {
         router.push("/dashboard");
+        localStorage.setItem('user', userData.name)
       } else {
         const errorData = await response.json();
         console.error("Signup Failed:", errorData.message || "unknown error");
