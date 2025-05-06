@@ -29,7 +29,7 @@ const Dashboard = () => {
       try {
         const response = await fetch("/api/blogs");
         const data = await response.json();
-        setUser(data);
+        setSavedBlogs(data);
       } catch (error) {
         console.log(error);
       } 
@@ -40,10 +40,11 @@ const Dashboard = () => {
   useEffect(() => {
   const savedUser = localStorage.getItem('user');
   
- setUser(savedUser);
 
-  
-   console.log(savedUser)
+  setUser(savedUser);
+ 
+
+  console.log(user)
    
  
   },[]);
@@ -103,31 +104,32 @@ const Dashboard = () => {
   return (
     <>
       <AnimatePresence mode="wait">
-      <motion.div
-        key={pathname}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-      > <Header welcome={user} />
-      <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 p-2 gap-8 items-start">
-        <BlogForm
-          change={handleChange}
-          click={handleClick}
-          title={blogData.title}
-          content={blogData.content}
-        />
+        <motion.div
+          key={pathname}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          {" "}
+          <Header />
+          <p className="text-end  font-bold capitalize font-stretch-extra-condensed p-2">{`Welcome to your blogs page ${user.trim()}`}</p>
+          <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 p-2 gap-8 items-start">
+            <BlogForm
+              change={handleChange}
+              click={handleClick}
+              title={blogData.title}
+              content={blogData.content}
+            />
 
-          <BlogPosts
-            blogData={blogData}
-            savedBlogs={savedBlogs}
-            handleDelete={handleDelete}
-          />
-        
-      </div>
-      </motion.div>
+            <BlogPosts
+              blogData={blogData}
+              savedBlogs={savedBlogs}
+              handleDelete={handleDelete}
+            />
+          </div>
+        </motion.div>
       </AnimatePresence>
-     
     </>
   );
 };

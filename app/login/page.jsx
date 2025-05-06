@@ -61,11 +61,11 @@ e.preventDefault();
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
       <Header />
-      <h1>Login Page</h1>
+     
       <Form
         handleChange={handleChange}
         handleClick={handleClick}
-        email={userData.email}
+        name={userData.username}
         password={userData.password}
       />
       </motion.div>

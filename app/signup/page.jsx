@@ -54,7 +54,7 @@ const Signup = () => {
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
               <Header />
-      <h1>Signup Page</h1>
+   
       <Form
         handleClick={handleClick}
         handleChange={handleChange}

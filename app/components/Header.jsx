@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 
 
-const Header = ({welcome}) => {
+const Header = () => {
 
 const pathname = usePathname();
 const router = useRouter();
@@ -25,9 +25,11 @@ const handleClick = () => {
     >
       <nav className="flex justify-between p-4 md:col-span-3">
         <Link href={"/"}>
-          <h1 className="hover:text-purple-900">LindBlogs</h1>
+          <h1 className="hover:text-blue-300 font-stretch-extra-condensed text-shadow-lg">
+            Lindblogs
+          </h1>
         </Link>
-        {welcome}
+
         {pathname === "/" && (
           <Link href={"/login"} className="link link-hover self-center">
             Login
