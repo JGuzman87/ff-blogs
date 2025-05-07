@@ -34,6 +34,7 @@ e.preventDefault();
           
         } else {
           const errorData = await response.json();
+          alert("Login Failed: Invalid email or password")
           console.error("Login Failed:", errorData.message || 'unknown error');
         }
       } catch(error) {

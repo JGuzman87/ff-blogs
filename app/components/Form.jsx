@@ -10,9 +10,12 @@ const Form = ({handleChange, handleClick,name, email, password,}) => {
         className="flex flex-col p-4 gap-4 min-w-full md:min-w-1/2 items-center shadow-2xl mt-25"
         onSubmit={handleClick}
       >
-        <h1 className="hover:text-blue-300 font-stretch-extra-condensed text-shadow-lg">
-          Lindblogs
-        </h1>
+        <Link href={"/"}>
+          <h1 className="hover:text-blue-300 font-stretch-extra-condensed text-shadow-lg">
+            Lindblogs
+          </h1>
+        </Link>
+
         <label className="font-stretch-extra-condensed text-shadow-lg text-2xl">
           Username
         </label>
@@ -53,15 +56,15 @@ const Form = ({handleChange, handleClick,name, email, password,}) => {
           required
         />
         {pathname === "/login" && (
-          <div className="flex flex-col">
+          <div className="flex flex-col font-bold">
             <p>not registered?</p>
             <Link href={"/signup"}>
-              <p className="link link-hover">Sign up</p>
+              <p className="link link-hover text-blue-500">Sign up</p>
             </Link>
           </div>
         )}
         <button
-          className="bg-cyan-500 shadow-lg shadow-cyan-500/50  w-1/2 "
+          className="bg-cyan-500 shadow-lg shadow-cyan-500/50  w-1/2 rounded-lg hover:bg-sky-700"
           type="submit"
         >
           Submit
