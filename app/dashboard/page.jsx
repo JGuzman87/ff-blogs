@@ -103,6 +103,7 @@ const Dashboard = () => {
   };
   return (
     <>
+      <Header />
       <AnimatePresence mode="wait">
         <motion.div
           key={pathname}
@@ -112,7 +113,6 @@ const Dashboard = () => {
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
           {" "}
-          <Header />
           <p className="text-end  font-bold capitalize font-stretch-extra-condensed p-2">{`Welcome to your blogs page ${user.trim()}`}</p>
           <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 p-2 gap-8 items-start">
             <BlogForm

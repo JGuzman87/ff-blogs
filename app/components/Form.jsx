@@ -7,9 +7,12 @@ const Form = ({handleChange, handleClick,name, email, password,}) => {
   return (
     <div className="flex justify-center p-8 ">
       <form
-        className="flex flex-col p-4 gap-4 min-w-full md:min-w-1/2 items-center shadow-2xl"
+        className="flex flex-col p-4 gap-4 min-w-full md:min-w-1/2 items-center shadow-2xl mt-25"
         onSubmit={handleClick}
       >
+        <h1 className="hover:text-blue-300 font-stretch-extra-condensed text-shadow-lg">
+          Lindblogs
+        </h1>
         <label className="font-stretch-extra-condensed text-shadow-lg text-2xl">
           Username
         </label>

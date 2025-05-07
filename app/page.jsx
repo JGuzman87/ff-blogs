@@ -26,6 +26,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-4 ">
+      <Header />
+
       <AnimatePresence mode="wait">
         <motion.div
           key={pathname}
@@ -34,8 +36,6 @@ export default function Home() {
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
-          <Header />
-
           {blogs?.map((blog) => (
             <div
               key={blog.id}

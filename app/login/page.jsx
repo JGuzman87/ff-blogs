@@ -60,9 +60,10 @@ e.preventDefault();
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
-      <Header />
+  
      
       <Form
+      
         handleChange={handleChange}
         handleClick={handleClick}
         name={userData.username}
