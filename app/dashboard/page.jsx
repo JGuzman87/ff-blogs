@@ -13,6 +13,7 @@ const Dashboard = () => {
   const [blogData, setBlogData] = useState({ title: "", content: "" });
   const [savedBlogs, setSavedBlogs] = useState([]);
   const [user, setUser] = useState('')
+
  
 
   const router = useRouter();
