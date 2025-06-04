@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import {useEffect, useState} from 'react'
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
 import { useRouter } from 'next/navigation';
@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 
 
 const Header = () => {
+
+const [token, setToken] = useState(null)
 
 const pathname = usePathname();
 const router = useRouter();
@@ -16,8 +18,11 @@ const handleClick = () => {
   router.push('/');
 
 }
+useEffect(() => {
+  setToken(localStorage.getItem("token"));
+}, []);
 
-const token = localStorage.getItem('token');
+
 
 
   return (
@@ -27,14 +32,14 @@ const token = localStorage.getItem('token');
     >
       <nav className="flex justify-between p-4 md:col-span-3">
         <Link href={"/"}>
-          <h1 className="hover:text-blue-300 font-stretch-extra-condensed text-shadow-lg">
+          <h1 className="hover:text-blue-300 font-stretch-extra-condensed text-shadow-lg link link-hover">
             Lindblogs
           </h1>
         </Link>
    
         {pathname === "/" && (
-          <Link href={token ? "/dashboard" : "/login"} className="link link-hover self-center font-bold">
-            {token ? "Dashboard" : "Login"}
+          <Link href={token ? "/dashboard" : "/login"} className="link link-hover self-center font-bold hover:text-blue-600">
+            {token ? "Back to Dashboard" : "Login"}
           </Link>
         )}
         {pathname === "/dashboard" && (
