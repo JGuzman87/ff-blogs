@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Form from '../components/Form';
 import Header from '../components/Header';
 import { useRouter }  from 'next/navigation';
@@ -16,7 +16,14 @@ const Login = () => {
         username: '',
         password: ''
     });
-   
+   //useEffect if user is logged in, they can't access login page.
+useEffect(() => {
+  const token = localStorage.getItem('token');
+
+  if(token) {
+    router.push('/dashboard')
+  }
+}, []);
 
 const handleClick = async (e) => {
 e.preventDefault();
