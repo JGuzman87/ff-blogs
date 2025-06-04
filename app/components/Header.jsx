@@ -17,6 +17,8 @@ const handleClick = () => {
 
 }
 
+const token = localStorage.getItem('token');
+
 
   return (
     <header
@@ -29,10 +31,10 @@ const handleClick = () => {
             Lindblogs
           </h1>
         </Link>
-
+   
         {pathname === "/" && (
-          <Link href={"/login"} className="link link-hover self-center">
-            Login
+          <Link href={token ? "/dashboard" : "/login"} className="link link-hover self-center font-bold">
+            {token ? "Dashboard" : "Login"}
           </Link>
         )}
         {pathname === "/dashboard" && (
