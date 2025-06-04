@@ -13,7 +13,7 @@ const router = useRouter();
 
 const handleClick = () => {
   localStorage.removeItem('token');
-  router.push('/login');
+  router.push('/');
 
 }
 
