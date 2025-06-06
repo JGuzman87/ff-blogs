@@ -12,29 +12,37 @@ const Dashboard = () => {
   const pathname = usePathname();
   const [blogData, setBlogData] = useState({ title: "", content: "" });
   const [savedBlogs, setSavedBlogs] = useState([]);
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState('');
+  const [token, setToken] = useState(null);
 
  
 
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if(!token) {
-      router.push('/login')
+    const storedToken = localStorage.getItem('token');
+    setToken(storedToken);
+    if (!storedToken) {
+      router.push('/login');
     }
   },[])
 
+  const fetchBlogs = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch("/api/blogs", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      const data = await response.json();
+      setSavedBlogs(data);
+    } catch (error) {
+      console.log(error);
+    } 
+  };
+
   useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await fetch("/api/blogs");
-        const data = await response.json();
-        setSavedBlogs(data);
-      } catch (error) {
-        console.log(error);
-      } 
-    };
     fetchBlogs();
   }, []);
 
@@ -56,7 +64,11 @@ const Dashboard = () => {
     try {
       const response = await fetch("/api/blogs/", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json", 
+          "Authorization": `Bearer ${token}`
+
+         },
         body: JSON.stringify(blogData),
       });
       if (response.ok) {
@@ -72,16 +84,7 @@ const Dashboard = () => {
       console.error(error);
     }
 
-    const fetchBlogs = async () => {
-      try {
-        const response = await fetch("/api/blogs");
-        const data = await response.json();
-        setSavedBlogs(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchBlogs();
+    await fetchBlogs();
 
     setBlogData({ title: "", content: "" });
   };

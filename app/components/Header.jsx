@@ -22,7 +22,10 @@ useEffect(() => {
   setToken(localStorage.getItem("token"));
 }, []);
 
-
+useEffect(() => {
+  const now = performance.now();
+  console.log(`Hydrated at: ${Math.round(now)}ms`);
+}, []);
 
 
   return (

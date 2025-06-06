@@ -17,6 +17,7 @@ CREATE TABLE blog_posts (
     title TEXT NOT NULL,
     content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    user_id INTEGER REFERENCES users(id)
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 SELECT * FROM users;
+SELECT * FROM blog_posts;
