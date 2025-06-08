@@ -35,8 +35,9 @@ const Signup = () => {
         router.push("/dashboard");
         localStorage.setItem('user', userData.username)
       } else {
-        const errorData = await response.json();
-        console.error("Signup Failed:", errorData.message || "unknown error");
+        alert(
+          "Signup Failed: username or email already exist, please log in"
+        );
       }
     } catch (error) {
       console.error("Error during login:", error);

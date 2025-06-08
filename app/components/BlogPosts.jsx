@@ -14,7 +14,7 @@ const BlogPosts = ({savedBlogs, blogData, handleDelete}) => {
 
   return (
     <div className="flex flex-col justify-between md:col-start-2 md:col-end-4 gap-4">
-      {blogData &&
+      {Array.isArray(blogData)  &&
         savedBlogs.map((blog) => (
           <div
             key={blog.id}

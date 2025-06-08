@@ -127,6 +127,7 @@ const Dashboard = () => {
             />
 
             <BlogPosts
+              user
               blogData={blogData}
               savedBlogs={savedBlogs}
               handleDelete={handleDelete}
