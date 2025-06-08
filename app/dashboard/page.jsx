@@ -43,8 +43,11 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    fetchBlogs();
-  }, []);
+    if (token) {
+      fetchBlogs();
+    }
+   
+  }, [token]);
 
   useEffect(() => {
   const savedUser = localStorage.getItem('user');

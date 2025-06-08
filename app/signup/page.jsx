@@ -35,6 +35,7 @@ const Signup = () => {
         router.push("/dashboard");
         localStorage.setItem('user', userData.username)
       } else {
+  
         alert(
           "Signup Failed: username or email already exist, please log in"
         );
