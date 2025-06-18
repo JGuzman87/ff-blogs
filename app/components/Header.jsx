@@ -28,6 +28,8 @@ useEffect(() => {
 }, []);
 
 
+
+
   return (
     <header
       style={{ backgroundImage: "url('/olya-kolosha-3.jpg')" }}
@@ -35,7 +37,7 @@ useEffect(() => {
     >
       <nav className="flex justify-between p-4 md:col-span-3">
         <Link href={"/"}>
-          <h1 className="hover:text-blue-300 font-stretch-extra-condensed text-shadow-lg link link-hover">
+          <h1 id="header" className="header hover:text-blue-300 font-stretch-extra-condensed text-shadow-lg link link-hover">
             Lindblogs
           </h1>
         </Link>

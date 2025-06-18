@@ -20,6 +20,7 @@ const Dashboard = () => {
   const router = useRouter();
 
   useEffect(() => {
+    
     const storedToken = localStorage.getItem('token');
     setToken(storedToken);
     if (!storedToken) {
@@ -51,7 +52,7 @@ const Dashboard = () => {
 
   useEffect(() => {
   const savedUser = localStorage.getItem('user');
-  
+ 
 
   setUser(savedUser);
  
@@ -60,6 +61,21 @@ const Dashboard = () => {
    
  
   },[]);
+
+  useEffect(() => {
+ 
+      document.title = user;
+      
+  
+    console.log(document.title);
+  })
+
+  useEffect(() => {
+    if (user) {
+      document.querySelector("#header").innerHTML = `Create a blog post ${user}`;
+     
+    }
+  },);
 
   const handleClick = async (e) => {
     e.preventDefault();
