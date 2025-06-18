@@ -20,7 +20,7 @@ const Dashboard = () => {
   const router = useRouter();
 
   useEffect(() => {
-    
+
     const storedToken = localStorage.getItem('token');
     setToken(storedToken);
     if (!storedToken) {
@@ -63,16 +63,8 @@ const Dashboard = () => {
   },[]);
 
   useEffect(() => {
- 
-      document.title = user;
-      
-  
-    console.log(document.title);
-  })
-
-  useEffect(() => {
     if (user) {
-      document.querySelector("#header").innerHTML = `Create a blog post ${user}`;
+      document.querySelector("#header").innerHTML = `${user}'s Blog Dashboard`;
      
     }
   },);
@@ -136,7 +128,7 @@ const Dashboard = () => {
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
           {" "}
-          <p className="text-end  font-bold capitalize font-stretch-extra-condensed p-2">{`Welcome to your blogs page ${user.trim()}`}</p>
+          <p className="text-center  font-bold capitalize font-stretch-extra-condensed p-2">{`Welcome to your blogs page ${user.trim()}`}</p>
           <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 p-2 gap-8 items-start">
             <BlogForm
               change={handleChange}

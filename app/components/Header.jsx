@@ -37,7 +37,7 @@ useEffect(() => {
     >
       <nav className="flex justify-between p-4 md:col-span-3">
         <Link href={"/"}>
-          <h1 id="header" className="header hover:text-blue-300 font-stretch-extra-condensed text-shadow-lg link link-hover">
+          <h1 id="header" className="hover:text-blue-300 capitalize font-stretch-extra-condensed text-shadow-lg link link-hover">
             Lindblogs
           </h1>
         </Link>
