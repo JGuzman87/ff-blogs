@@ -62,12 +62,7 @@ const Dashboard = () => {
  
   },[]);
 
-  useEffect(() => {
-    if (user) {
-      document.querySelector("#header").innerHTML = `${user}'s Blog Dashboard`;
-     
-    }
-  },);
+
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -118,7 +113,7 @@ const Dashboard = () => {
   };
   return (
     <>
-      <Header />
+      <Header user={user}/>
       <AnimatePresence mode="wait">
         <motion.div
           key={pathname}

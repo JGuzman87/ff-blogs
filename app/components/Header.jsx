@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 
 
-const Header = () => {
+const Header = ({user}) => {
 
 const [token, setToken] = useState(null)
 
@@ -37,8 +37,8 @@ useEffect(() => {
     >
       <nav className="flex justify-between p-4 md:col-span-3">
         <Link href={"/"}>
-          <h1 id="header" className="hover:text-blue-300 capitalize font-stretch-extra-condensed text-shadow-lg link link-hover">
-            Lindblogs
+          <h1 id="header" className="hover:text-blue-300 capitalize font-stretch-extra-condensed text-shadow-lg link link-hover">{user ? `${user}'s Dashboard`
+          : "Lindblogs"}
           </h1>
         </Link>
    
